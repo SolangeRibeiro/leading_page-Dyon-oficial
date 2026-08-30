@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Dyon — tecnologia que transforma eventos em experiências. Plataforma que conecta organização, clientes, convidados e o destino em um único ecossistema.">
+<meta name="theme-color" content="#0F0A1F">
+<title>Dyon — Seu evento. Sua experiência.</title>
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Dyon">
+<meta property="og:title" content="Dyon — Seu evento. Sua experiência.">
+<meta property="og:description" content="A Dyon conecta planejamento, gestão, convidados e experiências em uma única plataforma. Lançamento previsto para 2027 — entre para o banco de espera.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230F0A1F'/%3E%3Cpath d='M16 6l8 10-8 10-8-10z' fill='none' stroke='%23C9A876' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+
+<!-- ==================== BIBLIOTECA DE ÍCONES ==================== -->
+<svg class="icon-sprite" aria-hidden="true" focusable="false"><defs>
+  <symbol id="i-diamond" viewBox="0 0 24 24"><path d="M12 2 22 12 12 22 2 12z"/></symbol>
+  <symbol id="i-clipboard" viewBox="0 0 24 24"><path d="M9 3h6a1 1 0 0 1 1 1v1H8V4a1 1 0 0 1 1-1z"/><path d="M16 5h2a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h2"/><path d="M8 11h8M8 15h5"/></symbol>
+  <symbol id="i-user-check" viewBox="0 0 24 24"><path d="M15 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="m16.5 11.5 2 2 4-4"/></symbol>
+  <symbol id="i-ticket" viewBox="0 0 24 24"><path d="M3 9V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2a3 3 0 0 0 0 6v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a3 3 0 0 0 0-6z"/><path d="M14 5v2M14 11v2M14 17v2"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-table" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M9 10v9"/></symbol>
+  <symbol id="i-message" viewBox="0 0 24 24"><path d="M21 14a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></symbol>
+  <symbol id="i-calculator" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8v3H8z"/><path d="M8 13h.01M12 13h.01M16 13h.01M8 17h.01M12 17h.01M16 17h.01"/></symbol>
+  <symbol id="i-check-square" viewBox="0 0 24 24"><path d="M21 11v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/><path d="m8 11 3 3 10-10"/></symbol>
+  <symbol id="i-shuffle" viewBox="0 0 24 24"><path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M10.3 3.9 2.4 17.8A2 2 0 0 0 4.1 21h15.8a2 2 0 0 0 1.7-3.2L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></symbol>
+  <symbol id="i-utensils" viewBox="0 0 24 24"><path d="M5 3v5a2.5 2.5 0 0 0 5 0V3M7.5 10.5V21"/><path d="M18.5 3c-1.6 1.4-2.5 3.4-2.5 5.5 0 1.8 1 3 2.5 3V3zM18.5 11.5V21"/></symbol>
+  <symbol id="i-bed" viewBox="0 0 24 24"><path d="M2 20v-9M2 14h20M22 20v-5a3 3 0 0 0-3-3H2"/><path d="M6.5 12V9a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v3"/></symbol>
+  <symbol id="i-car" viewBox="0 0 24 24"><path d="m5 12 1.6-4.4A2 2 0 0 1 8.5 6h7a2 2 0 0 1 1.9 1.6L19 12"/><path d="M4 12h16a1 1 0 0 1 1 1v4H3v-4a1 1 0 0 1 1-1z"/><path d="M6 17v2M18 17v2M6.5 14.5h.01M17.5 14.5h.01"/></symbol>
+  <symbol id="i-camera" viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h3l1.8-3h6.4L17 7h3a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="3.6"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4"/></symbol>
+  <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="M11 3.5 12.7 8.3 17.5 10 12.7 11.7 11 16.5 9.3 11.7 4.5 10 9.3 8.3z"/><path d="M18 14.5l.9 2.6 2.6.9-2.6.9-.9 2.6-.9-2.6-2.6-.9 2.6-.9z"/></symbol>
+  <symbol id="i-bot" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="13" rx="3"/><path d="M12 8V4M9.5 4h5"/><path d="M8.5 13.5h.01M15.5 13.5h.01M9.5 17.5h5"/></symbol>
+  <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><path d="m16.2 7.8-2.9 6.5-6.5 2.9 2.9-6.5z"/></symbol>
+  <symbol id="i-coffee" viewBox="0 0 24 24"><path d="M18 8h1a3 3 0 1 1 0 6h-1"/><path d="M3 8h15v6a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5z"/><path d="M6 2v2.5M10 2v2.5M14 2v2.5"/></symbol>
+  <symbol id="i-landmark" viewBox="0 0 24 24"><path d="M3 21h18M2 10 12 4l10 6z"/><path d="M5 10v11M9.5 10v11M14.5 10v11M19 10v11"/></symbol>
+  <symbol id="i-music" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></symbol>
+  <symbol id="i-bag" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-building" viewBox="0 0 24 24"><path d="M3 21h18M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M10 21v-4h4v4"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 5.6a5 5 0 0 0-7.1 0L12 7.3l-1.7-1.7a5 5 0 1 0-7.1 7.1l8.8 8.8 8.8-8.8a5 5 0 0 0 0-7.1z"/></symbol>
+  <symbol id="i-handshake" viewBox="0 0 24 24"><path d="M2 11.5 6.5 7l4.5 1 3 3-2 2-3-1"/><path d="m13 8 3.5-2L22 11l-3 3"/><path d="m11 17 1.7 1.7a1.4 1.4 0 0 0 2-2"/><path d="m14.7 16.7 1.8 1.8a1.4 1.4 0 0 0 2-2L13.5 11"/></symbol>
+  <symbol id="i-trending" viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 8-8"/><path d="M15 7h6v6"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
+  <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.3 7.4L3.5 20.5l1.6-4.6a8.4 8.4 0 1 1 15.4-4.3z"/><path d="M8.9 8.4c.2-.4.4-.4.6-.4h.5c.2 0 .4 0 .6.4l.6 1.4c.1.2 0 .4-.1.6l-.4.4c-.1.2-.2.3 0 .5a6 6 0 0 0 2.5 2.2c.2.1.4.1.5 0l.5-.6c.1-.2.3-.2.5-.1l1.4.7c.2.1.3.2.3.4v.4c0 .4-.3.9-.6 1.1-.4.3-.9.4-1.4.3a7.6 7.6 0 0 1-5.5-5.3c-.2-.7-.1-1.4.3-2z"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 5 5L20 7"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-rocket" viewBox="0 0 24 24"><path d="M12.5 15 9 11.5a20 20 0 0 1 2-3.7A12 12 0 0 1 21.5 2.5c.2 3-.7 7.6-5.3 10.7a20 20 0 0 1-3.7 1.8z"/><path d="M9 11.5H5s.4-2.6 1.8-3.7c1.6-1.2 4.2-.3 4.2-.3M12.5 15v4s2.6-.4 3.7-1.8c1.2-1.6.3-4.2.3-4.2"/><path d="M4.5 16.5c-1.4 1.2-1.9 4.6-1.9 4.6s3.4-.5 4.6-1.9a1.9 1.9 0 0 0-2.7-2.7z"/></symbol>
+  <symbol id="i-coin" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v10"/><path d="M14.6 9.4A2.5 2.5 0 0 0 12.3 8h-.8a2 2 0 0 0 0 4h1a2 2 0 0 1 0 4h-.8a2.5 2.5 0 0 1-2.3-1.4"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M9 17H7.5a5 5 0 0 1 0-10H9M15 7h1.5a5 5 0 0 1 0 10H15M8 12h8"/></symbol>
+  <symbol id="i-layout" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9.5h18M9 9.5V20"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-phone-app" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10.5 5.5h3M11 18.5h2"/></symbol>
+</defs></svg>
+
+<!-- ==================== NAV ==================== -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#inicio" class="nav-logo" aria-label="Dyon — ir para o início">
+      <svg class="ico nav-logo-mark" aria-hidden="true"><use href="#i-diamond"/></svg>
+      <span>DYON</span>
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="Navegação principal">
+      <a href="#inicio">Início</a>
+      <a href="#solucoes">Soluções</a>
+      <a href="#experiencia">Experiência</a>
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <a href="#contato" class="nav-cta">Lista de espera</a>
+    <button class="nav-burger" id="navBurger" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="conteudo">
+
+<!-- ==================== 1. HERO ==================== -->
+<section class="hero" id="inicio">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-lines" aria-hidden="true"></div>
+  <div class="section-inner hero-inner">
+    <span class="eyebrow light">Event Tech · Culture Tech</span>
+    <span class="launch-badge"><svg class="ico" aria-hidden="true"><use href="#i-rocket"/></svg>Lançamento previsto para 2027 · banco de espera aberto</span>
+    <h1 class="hero-title">Seu evento.<br><span>Sua experiência.</span></h1>
+    <p class="hero-sub">A Dyon conecta planejamento, gestão, convidados e experiências em uma única plataforma. Estamos em desenvolvimento — entre para o banco de espera e acompanhe de perto.</p>
+    <div class="hero-actions">
+      <a href="#contato" class="btn btn-gold">Entrar na lista de espera</a>
+      <a href="#experimente" class="btn btn-outline-light">Conhecer o protótipo</a>
+    </div>
+
+    <div class="ecosystem" id="ecosystem">
+      <svg class="ecosystem-thread" id="ecoThread" viewBox="0 0 1000 120" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="threadGrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#A78BFA"/>
+            <stop offset="50%" stop-color="#C9A876"/>
+            <stop offset="100%" stop-color="#A78BFA"/>
+          </linearGradient>
+        </defs>
+        <path d="M 80 60 C 250 10, 350 110, 500 60 S 750 10, 920 60"/>
+      </svg>
+      <div class="eco-node"><span><svg class="ico" aria-hidden="true"><use href="#i-clipboard"/></svg></span><b>Organizador</b></div>
+      <div class="eco-node eco-node-brand"><span><svg class="ico" aria-hidden="true"><use href="#i-diamond"/></svg></span><b>DYON</b></div>
+      <div class="eco-node"><span><svg class="ico" aria-hidden="true"><use href="#i-user-check"/></svg></span><b>Cliente</b></div>
+      <div class="eco-node"><span><svg class="ico" aria-hidden="true"><use href="#i-ticket"/></svg></span><b>Convidado</b></div>
+      <div class="eco-node"><span><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg></span><b>Destino</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 2. O PROBLEMA ==================== -->
+<section class="section" id="problema">
+  <div class="section-inner">
+    <span class="eyebrow dark">O problema</span>
+    <h2 class="section-title">Eventos ainda são planejados em dezenas de lugares diferentes.</h2>
+    <div class="problem-grid">
+      <div class="problem-chip"><svg class="ico" aria-hidden="true"><use href="#i-table"/></svg>Planilhas</div>
+      <div class="problem-chip"><svg class="ico" aria-hidden="true"><use href="#i-message"/></svg>Mensagens soltas</div>
+      <div class="problem-chip"><svg class="ico" aria-hidden="true"><use href="#i-file"/></svg>Documentos</div>
+      <div class="problem-chip"><svg class="ico" aria-hidden="true"><use href="#i-calculator"/></svg>Cálculos manuais</div>
+      <div class="problem-chip"><svg class="ico" aria-hidden="true"><use href="#i-check-square"/></svg>Checklists</div>
+      <div class="problem-chip"><svg class="ico" aria-hidden="true"><use href="#i-shuffle"/></svg>Informações espalhadas</div>
+      <div class="problem-chip"><svg class="ico" aria-hidden="true"><use href="#i-alert"/></svg>Falta de comunicação</div>
+    </div>
+    <p class="problem-text">Organizar um evento envolve centenas de informações, decisões e pessoas. Quando tudo está espalhado em planilhas, mensagens e documentos, aumentam os erros, o retrabalho e a dificuldade de oferecer uma experiência realmente personalizada.</p>
+    <p class="problem-punch">Foi para conectar tudo isso que nasceu a <b>Dyon</b>.</p>
+  </div>
+</section>
+
+<!-- ==================== 3. A SOLUÇÃO ==================== -->
+<section class="section alt" id="solucoes">
+  <div class="section-inner">
+    <span class="eyebrow dark">A solução</span>
+    <h2 class="section-title">Um ecossistema. Uma experiência.</h2>
+    <div class="pillar-grid">
+      <article class="pillar-card">
+        <div class="pillar-head">
+          <span class="pillar-icon"><svg class="ico" aria-hidden="true"><use href="#i-layout"/></svg></span>
+          <span class="pillar-num">01</span>
+        </div>
+        <h3>Gestão</h3>
+        <p class="pillar-lead">Planejamento inteligente para organizadores.</p>
+        <p class="pillar-desc">Centralize informações, automatize processos e tome decisões com mais segurança.</p>
+        <ul class="pillar-list">
+          <li>Planejamento</li><li>Recursos</li><li>Equipe</li><li>Alimentação</li><li>Bebidas</li><li>Mesas e cadeiras</li><li>Cronograma</li><li>Gestão do evento</li>
+        </ul>
+      </article>
+      <article class="pillar-card">
+        <div class="pillar-head">
+          <span class="pillar-icon"><svg class="ico" aria-hidden="true"><use href="#i-eye"/></svg></span>
+          <span class="pillar-num">02</span>
+        </div>
+        <h3>Cliente</h3>
+        <p class="pillar-lead">Transparência em cada etapa.</p>
+        <p class="pillar-desc">Permita que o cliente acompanhe o desenvolvimento do evento e tenha uma visão clara de cada etapa do planejamento.</p>
+      </article>
+      <article class="pillar-card">
+        <div class="pillar-head">
+          <span class="pillar-icon"><svg class="ico" aria-hidden="true"><use href="#i-phone-app"/></svg></span>
+          <span class="pillar-num">03</span>
+        </div>
+        <h3>Convidado</h3>
+        <p class="pillar-lead">Mais do que participar. Viver a experiência.</p>
+        <p class="pillar-desc">Um aplicativo personalizado que reúne informações do evento, programação, localização, serviços, turismo e experiências.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 4. EXPERIÊNCIA DO CONVIDADO ==================== -->
+<section class="section dark" id="experiencia">
+  <div class="section-inner">
+    <span class="eyebrow light">Experiência do convidado</span>
+    <h2 class="section-title light">Seu convidado também faz parte do evento.</h2>
+    <div class="guest-showcase">
+      <div class="phones">
+        <div class="mockphone mockphone-back">
+          <div class="mockscreen mockscreen-ticket">
+            <span class="mock-tag">Credencial digital</span>
+            <b class="mock-guest-name">Camila Duarte</b>
+            <span class="mock-ticket-event">HackTown 2026 · 10ª edição</span>
+            <svg class="mock-qr" viewBox="0 0 29 29" aria-hidden="true">
+              <path fill-rule="evenodd" d="M0 0h7v7H0zM1 1h5v5H1zM2 2h3v3H2zM22 0h7v7h-7zM23 1h5v5h-5zM24 2h3v3h-3zM0 22h7v7H0zM1 23h5v5H1zM2 24h3v3H2z"/>
+              <path d="M8 0h1v1H8zM10 0h1v1h-1zM13 0h1v1h-1zM17 0h1v1h-1zM20 0h1v1h-1zM9 1h1v1H9zM11 1h1v1h-1zM14 1h1v1h-1zM16 1h1v1h-1zM19 1h1v1h-1zM8 2h1v1H8zM12 2h1v1h-1zM15 2h1v1h-1zM18 2h1v1h-1zM20 2h1v1h-1zM10 3h1v1h-1zM13 3h1v1h-1zM17 3h1v1h-1zM19 3h1v1h-1zM8 4h1v1H8zM11 4h1v1h-1zM14 4h1v1h-1zM16 4h1v1h-1zM20 4h1v1h-1zM9 5h1v1H9zM12 5h1v1h-1zM15 5h1v1h-1zM18 5h1v1h-1zM8 6h1v1H8zM10 6h1v1h-1zM13 6h1v1h-1zM17 6h1v1h-1zM20 6h1v1h-1z"/>
+              <path d="M0 8h1v1H0zM2 8h1v1H2zM5 8h1v1H5zM1 9h1v1H1zM4 9h1v1H4zM6 9h1v1H6zM0 10h1v1H0zM3 10h1v1H3zM5 10h1v1H5zM2 11h1v1H2zM4 11h1v1H4zM0 12h1v1H0zM3 12h1v1H3zM6 12h1v1H6zM1 13h1v1H1zM5 13h1v1H5zM0 14h1v1H0zM2 14h1v1H2zM4 14h1v1H4zM6 14h1v1H6zM1 15h1v1H1zM3 15h1v1H3zM0 16h1v1H0zM4 16h1v1H4zM6 16h1v1H6zM2 17h1v1H2zM5 17h1v1H5zM0 18h1v1H0zM3 18h1v1H3zM6 18h1v1H6zM1 19h1v1H1zM4 19h1v1H4zM0 20h1v1H0zM2 20h1v1H2zM5 20h1v1H5z"/>
+              <path d="M8 8h2v2H8zM11 8h1v1h-1zM13 8h2v2h-2zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h2v2h-2zM24 8h1v1h-1zM26 8h1v1h-1zM28 8h1v1h-1zM10 9h1v1h-1zM12 9h1v1h-1zM15 9h1v1h-1zM17 9h1v1h-1zM19 9h1v1h-1zM22 9h1v1h-1zM25 9h1v1h-1zM27 9h1v1h-1zM8 10h1v1H8zM11 10h2v2h-2zM14 10h1v1h-1zM16 10h2v2h-2zM19 10h1v1h-1zM21 10h1v1h-1zM23 10h1v1h-1zM26 10h1v1h-1zM28 10h1v1h-1zM9 11h1v1H9zM13 11h1v1h-1zM15 11h1v1h-1zM18 11h1v1h-1zM20 11h1v1h-1zM22 11h1v1h-1zM24 11h1v1h-1zM27 11h1v1h-1zM8 12h1v1H8zM10 12h1v1h-1zM12 12h1v1h-1zM14 12h2v2h-2zM17 12h1v1h-1zM19 12h2v2h-2zM23 12h1v1h-1zM25 12h1v1h-1zM28 12h1v1h-1zM9 13h1v1H9zM11 13h1v1h-1zM13 13h1v1h-1zM16 13h1v1h-1zM18 13h1v1h-1zM21 13h1v1h-1zM24 13h1v1h-1zM26 13h1v1h-1zM8 14h1v1H8zM12 14h1v1h-1zM17 14h1v1h-1zM20 14h1v1h-1zM22 14h1v1h-1zM25 14h1v1h-1zM27 14h1v1h-1zM10 15h1v1h-1zM13 15h2v2h-2zM16 15h1v1h-1zM18 15h1v1h-1zM21 15h1v1h-1zM23 15h1v1h-1zM26 15h1v1h-1zM28 15h1v1h-1zM8 16h1v1H8zM11 16h1v1h-1zM15 16h1v1h-1zM17 16h2v2h-2zM20 16h1v1h-1zM22 16h1v1h-1zM24 16h1v1h-1zM27 16h1v1h-1zM9 17h1v1H9zM12 17h1v1h-1zM14 17h1v1h-1zM16 17h1v1h-1zM19 17h1v1h-1zM21 17h1v1h-1zM23 17h1v1h-1zM25 17h1v1h-1zM28 17h1v1h-1zM8 18h1v1H8zM10 18h1v1h-1zM13 18h1v1h-1zM15 18h2v2h-2zM18 18h1v1h-1zM20 18h1v1h-1zM22 18h1v1h-1zM26 18h1v1h-1zM9 19h1v1H9zM11 19h1v1h-1zM14 19h1v1h-1zM17 19h1v1h-1zM19 19h2v2h-2zM24 19h1v1h-1zM27 19h1v1h-1zM8 20h1v1H8zM12 20h1v1h-1zM16 20h1v1h-1zM18 20h1v1h-1zM21 20h1v1h-1zM23 20h1v1h-1zM25 20h1v1h-1zM28 20h1v1h-1z"/>
+              <path d="M8 22h1v1H8zM10 22h1v1h-1zM13 22h1v1h-1zM16 22h1v1h-1zM19 22h1v1h-1zM21 22h1v1h-1zM24 22h1v1h-1zM27 22h1v1h-1zM9 23h1v1H9zM12 23h1v1h-1zM15 23h1v1h-1zM18 23h1v1h-1zM22 23h1v1h-1zM25 23h1v1h-1zM28 23h1v1h-1zM8 24h1v1H8zM11 24h1v1h-1zM14 24h1v1h-1zM17 24h1v1h-1zM20 24h1v1h-1zM23 24h1v1h-1zM26 24h1v1h-1zM10 25h1v1h-1zM13 25h1v1h-1zM16 25h1v1h-1zM19 25h1v1h-1zM21 25h1v1h-1zM24 25h1v1h-1zM28 25h1v1h-1zM8 26h1v1H8zM12 26h1v1h-1zM15 26h1v1h-1zM18 26h1v1h-1zM22 26h1v1h-1zM25 26h1v1h-1zM27 26h1v1h-1zM9 27h1v1H9zM11 27h1v1h-1zM14 27h1v1h-1zM17 27h1v1h-1zM20 27h1v1h-1zM23 27h1v1h-1zM26 27h1v1h-1zM8 28h1v1H8zM13 28h1v1h-1zM16 28h1v1h-1zM19 28h1v1h-1zM21 28h1v1h-1zM24 28h1v1h-1zM27 28h1v1h-1z"/>
+            </svg>
+          </div>
+        </div>
+        <div class="mockphone mockphone-front">
+          <div class="mockscreen mockscreen-home">
+            <div class="mock-home-header">
+              <p class="mock-hi">Olá, <b>Camila</b></p>
+              <span class="mock-bell"><svg class="ico" aria-hidden="true"><use href="#i-bell"/></svg></span>
+            </div>
+            <div class="mock-ring"><span>12</span></div>
+            <p class="mock-caption">dias para o evento</p>
+            <div class="mock-grid">
+              <div><svg class="ico" aria-hidden="true"><use href="#i-calendar"/></svg>Agenda</div>
+              <div><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg>Local</div>
+              <div><svg class="ico" aria-hidden="true"><use href="#i-ticket"/></svg>Convite</div>
+              <div><svg class="ico" aria-hidden="true"><use href="#i-target"/></svg>Trilhas</div>
+              <div><svg class="ico" aria-hidden="true"><use href="#i-utensils"/></svg>Comida</div>
+              <div><svg class="ico" aria-hidden="true"><use href="#i-bed"/></svg>Hotel</div>
+              <div><svg class="ico" aria-hidden="true"><use href="#i-car"/></svg>Chegar</div>
+              <div><svg class="ico" aria-hidden="true"><use href="#i-camera"/></svg>Fotos</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="guest-features">
+        <p class="guest-lead">Antes, durante e depois do evento, o convidado encontra tudo o que precisa em um único lugar.</p>
+        <ul class="feature-list">
+          <li><span><svg class="ico" aria-hidden="true"><use href="#i-ticket"/></svg></span>Convite digital</li>
+          <li><span><svg class="ico" aria-hidden="true"><use href="#i-calendar"/></svg></span>Programação</li>
+          <li><span><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg></span>Localização</li>
+          <li><span><svg class="ico" aria-hidden="true"><use href="#i-utensils"/></svg></span>Preferências alimentares</li>
+          <li><span><svg class="ico" aria-hidden="true"><use href="#i-bed"/></svg></span>Hospedagem</li>
+          <li><span><svg class="ico" aria-hidden="true"><use href="#i-car"/></svg></span>Transporte</li>
+          <li><span><svg class="ico" aria-hidden="true"><use href="#i-compass"/></svg></span>Turismo local</li>
+          <li><span><svg class="ico" aria-hidden="true"><use href="#i-sparkles"/></svg></span>Experiências</li>
+          <li><span><svg class="ico" aria-hidden="true"><use href="#i-bot"/></svg></span>Assistente inteligente</li>
+        </ul>
+        <a href="#experimente" class="btn btn-gold">Conheça o aplicativo</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 5. TURISMO E DESTINO ==================== -->
+<section class="section" id="turismo">
+  <div class="section-inner">
+    <span class="eyebrow dark">Turismo e destino</span>
+    <h2 class="section-title">O evento não termina no local da festa.</h2>
+    <p class="section-sub">A Dyon conecta o convidado ao destino.</p>
+    <div class="chip-row">
+      <span><svg class="ico" aria-hidden="true"><use href="#i-coffee"/></svg>Cafés</span>
+      <span><svg class="ico" aria-hidden="true"><use href="#i-utensils"/></svg>Restaurantes</span>
+      <span><svg class="ico" aria-hidden="true"><use href="#i-bed"/></svg>Hotéis</span>
+      <span><svg class="ico" aria-hidden="true"><use href="#i-landmark"/></svg>Pontos turísticos</span>
+      <span><svg class="ico" aria-hidden="true"><use href="#i-music"/></svg>Cultura</span>
+      <span><svg class="ico" aria-hidden="true"><use href="#i-bag"/></svg>Comércio</span>
+      <span><svg class="ico" aria-hidden="true"><use href="#i-car"/></svg>Transporte</span>
+      <span><svg class="ico" aria-hidden="true"><use href="#i-sparkles"/></svg>Experiências locais</span>
+    </div>
+    <p class="problem-text">Para eventos que recebem pessoas de outras cidades, a Dyon transforma o destino em parte da experiência.</p>
+    <div class="destaque-bar">Evento + tecnologia + turismo + experiência</div>
+  </div>
+</section>
+
+<!-- ==================== 6. INTELIGÊNCIA ARTIFICIAL ==================== -->
+<section class="section dark" id="ia">
+  <div class="section-inner">
+    <span class="eyebrow light">Inteligência artificial</span>
+    <h2 class="section-title light">Uma experiência que entende o convidado.</h2>
+    <div class="chat-mock">
+      <div class="chat-mock-header">
+        <svg class="ico" aria-hidden="true"><use href="#i-sparkles"/></svg>
+        <span>Assistente Dyon</span>
+        <em class="chat-status">online</em>
+      </div>
+      <div class="chat-mock-body">
+        <div class="chat-mock-bubble user">Qual restaurante fica mais perto do evento?</div>
+        <div class="chat-mock-bubble bot">Encontrei 3 opções próximas. A mais próxima está a 600 metros do local.</div>
+        <div class="chat-mock-bubble user">O que posso fazer amanhã na cidade?</div>
+        <div class="chat-mock-bubble bot">Separei algumas experiências que combinam com seu perfil.</div>
+        <div class="chat-mock-bubble user">Como chego ao evento?</div>
+        <div class="chat-mock-bubble bot">Vou mostrar a melhor rota.</div>
+      </div>
+    </div>
+    <p class="ia-message">A tecnologia deixa de ser apenas ferramenta e passa a fazer parte da experiência.</p>
+  </div>
+</section>
+
+<!-- ==================== 7. COMO FUNCIONA ==================== -->
+<section class="section alt" id="como-funciona">
+  <div class="section-inner">
+    <span class="eyebrow dark">O caminho</span>
+    <h2 class="section-title">Do planejamento à experiência.</h2>
+    <div class="steps">
+      <svg class="steps-thread" viewBox="0 0 1000 40" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="threadGrad2" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#6D28D9"/>
+            <stop offset="50%" stop-color="#C9A876"/>
+            <stop offset="100%" stop-color="#6D28D9"/>
+          </linearGradient>
+        </defs>
+        <path d="M 60 20 L 940 20"/>
+      </svg>
+      <div class="step">
+        <span class="step-num">01</span>
+        <h3>Planeje</h3>
+        <p>O organizador cadastra o evento.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">02</span>
+        <h3>Conecte</h3>
+        <p>Clientes, equipe e convidados recebem as informações necessárias.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">03</span>
+        <h3>Personalize</h3>
+        <p>A Dyon utiliza dados do evento para personalizar a experiência.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">04</span>
+        <h3>Viva</h3>
+        <p>O convidado aproveita o evento e o destino.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 8. AGENDAR APRESENTAÇÃO DO PROTÓTIPO ==================== -->
+<section class="section dark experimente-section" id="experimente">
+  <div class="hero-glow subtle" aria-hidden="true"></div>
+  <div class="section-inner center">
+    <span class="eyebrow light">Para quem está no HackTown</span>
+    <h2 class="section-title light">Quer ver o protótipo de perto?</h2>
+    <p class="section-sub light">Agende uma apresentação exclusiva do aplicativo Dyon com a nossa equipe.</p>
+
+    <div class="schedule-flow" id="scheduleFlow">
+      <button class="btn btn-gold btn-lg" id="scheduleStart" type="button">Agendar apresentação do protótipo</button>
+
+      <div class="schedule-step" id="scheduleStep1">
+        <p class="schedule-question">Você é:</p>
+        <div class="schedule-options">
+          <button class="schedule-option" type="button" data-msg="Olá! Gostaria de agendar uma apresentação do protótipo do aplicativo Dyon. Sou um possível usuário da plataforma.">
+            <svg class="ico" aria-hidden="true"><use href="#i-users"/></svg>Usuário
+          </button>
+          <button class="schedule-option" type="button" data-msg="Olá! Gostaria de agendar uma apresentação do protótipo do aplicativo Dyon. Tenho interesse como investidor.">
+            <svg class="ico" aria-hidden="true"><use href="#i-trending"/></svg>Investidor
+          </button>
+        </div>
+      </div>
+
+      <div class="schedule-step" id="scheduleStep2">
+        <p class="schedule-confirm">Perfeito! Fale diretamente com a nossa equipe no WhatsApp para combinarmos o melhor horário:</p>
+        <a href="#" id="scheduleWhatsapp" target="_blank" rel="noopener" class="btn btn-gold btn-lg">
+          <svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>Falar no WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <div class="booth-cta">
+      <p>Está no HackTown agora e quer conhecer nosso estande pessoalmente?</p>
+      <a href="https://wa.me/5535999755191?text=Ol%C3%A1!%20Gostaria%20de%20conhecer%20o%20estande%20da%20Dyon%20no%20HackTown%202026." target="_blank" rel="noopener" class="btn btn-outline-light">
+        <svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>Falar sobre o estande
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 9. HACKTOWN ==================== -->
+<section class="section" id="sobre">
+  <div class="section-inner center">
+    <span class="eyebrow dark">Onde estamos</span>
+    <h2 class="section-title">Estamos no HackTown 2026.</h2>
+    <p class="hacktown-text">A Dyon nasceu para transformar a maneira como eventos são planejados e vividos. Agora, estamos trazendo essa visão para o maior festival de inovação, tecnologia e criatividade de Santa Rita do Sapucaí — com a plataforma completa em desenvolvimento e lançamento previsto para 2027.</p>
+    <a class="destaque-bar destaque-btn" href="https://wa.me/5535999755191?text=Ol%C3%A1!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20o%20estande%20da%20Dyon%20no%20HackTown%202026." target="_blank" rel="noopener">
+      Conheça a Dyon no nosso estande
+      <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg>
+    </a>
+    <p class="hacktown-cta">Vamos conversar?</p>
+  </div>
+</section>
+
+<!-- ==================== 10. PARA QUEM É A DYON ==================== -->
+<section class="section alt" id="publico">
+  <div class="section-inner">
+    <span class="eyebrow dark">Para quem é a Dyon</span>
+    <h2 class="section-title">Feita para todo o ecossistema de eventos.</h2>
+    <div class="audience-grid">
+      <article class="audience-card">
+        <span class="audience-icon"><svg class="ico" aria-hidden="true"><use href="#i-clipboard"/></svg></span>
+        <b>Cerimonialistas</b>
+        <p>Mais controle e menos trabalho operacional.</p>
+      </article>
+      <article class="audience-card">
+        <span class="audience-icon"><svg class="ico" aria-hidden="true"><use href="#i-building"/></svg></span>
+        <b>Empresas</b>
+        <p>Eventos corporativos mais organizados e conectados.</p>
+      </article>
+      <article class="audience-card">
+        <span class="audience-icon"><svg class="ico" aria-hidden="true"><use href="#i-heart"/></svg></span>
+        <b>Organizadores</b>
+        <p>Planejamento inteligente para eventos de todos os tipos.</p>
+      </article>
+      <article class="audience-card">
+        <span class="audience-icon"><svg class="ico" aria-hidden="true"><use href="#i-handshake"/></svg></span>
+        <b>Parceiros</b>
+        <p>Conecte seus serviços ao ecossistema de eventos.</p>
+      </article>
+      <article class="audience-card">
+        <span class="audience-icon"><svg class="ico" aria-hidden="true"><use href="#i-trending"/></svg></span>
+        <b>Investidores</b>
+        <p>Uma oportunidade em estágio inicial no mercado de Event Tech, com lançamento previsto para 2027.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 11+12. CONTATO E LEADS ==================== -->
+<section class="section dark" id="contato">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-form-wrap">
+        <span class="eyebrow light">Banco de espera</span>
+        <h2 class="section-title light">Quer fazer parte da Dyon?</h2>
+        <p class="section-sub light">A plataforma está em desenvolvimento, com lançamento previsto para 2027. Entre para o nosso banco de espera, converse sobre investimento e parceria, ou garanta um lugar na fase de testes.</p>
+        <form id="leadForm" class="lead-form" novalidate>
+          <div class="field-row">
+            <div class="field"><label for="fName">Nome</label><input type="text" id="fName" name="nome" autocomplete="name" required></div>
+            <div class="field"><label for="fCompany">Empresa</label><input type="text" id="fCompany" name="empresa" autocomplete="organization"></div>
+          </div>
+          <div class="field-row">
+            <div class="field"><label for="fEmail">E-mail</label><input type="email" id="fEmail" name="email" autocomplete="email" inputmode="email" required></div>
+            <div class="field"><label for="fWhats">WhatsApp</label><input type="tel" id="fWhats" name="whatsapp" autocomplete="tel" inputmode="tel" placeholder="(35) 99999-9999" required></div>
+          </div>
+          <div class="field">
+            <label for="fProfile">Perfil</label>
+            <select id="fProfile" name="perfil">
+              <option>Organizador de eventos</option>
+              <option>Cerimonialista</option>
+              <option>Empresa</option>
+              <option>Investidor</option>
+              <option>Parceiro</option>
+              <option>Outro</option>
+            </select>
+          </div>
+          <div class="field">
+            <span class="field-label">O que você quer conversar com a Dyon?</span>
+            <div class="interest-toggles">
+              <button type="button" class="interest-btn" id="btnInvestidor" aria-pressed="false" data-interest="Quero ser investidor/patrocinador">
+                <svg class="ico" aria-hidden="true"><use href="#i-coin"/></svg>
+                <span>Quero ser investidor ou patrocinador</span>
+              </button>
+              <button type="button" class="interest-btn" id="btnBeta" aria-pressed="false" data-interest="Quero participar do lançamento (fase de testes)">
+                <svg class="ico" aria-hidden="true"><use href="#i-ticket"/></svg>
+                <span>Quero participar da fase de testes</span>
+              </button>
+            </div>
+          </div>
+          <div class="field"><label for="fMsg">Conte mais, se quiser</label><textarea id="fMsg" name="mensagem" rows="3"></textarea></div>
+          <button type="submit" class="btn btn-gold btn-full">Quero falar com a Dyon</button>
+          <p class="form-note">Ao enviar, abrimos seu aplicativo de e-mail com a mensagem pronta para a nossa equipe.</p>
+        </form>
+        <div class="lead-success" id="leadSuccess" role="status" aria-live="polite">
+          <span><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg></span>
+          <p>Obrigado! Você entrou para o banco de espera da Dyon — em breve entraremos em contato.</p>
+        </div>
+      </div>
+
+      <div class="contact-channels">
+        <span class="eyebrow light">Canais oficiais</span>
+        <h3 class="channels-title">Vamos transformar eventos juntos?</h3>
+        <a class="channel-card" href="https://wa.me/5535999755191" target="_blank" rel="noopener">
+          <span class="channel-icon"><svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg></span>
+          <div><b>Falar pelo WhatsApp</b><p>Contato direto para negociações — (35) 99975-5191</p></div>
+          <svg class="ico channel-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+        </a>
+        <a class="channel-card" href="mailto:contato_dyon@hotmail.com">
+          <span class="channel-icon"><svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg></span>
+          <div><b>Enviar e-mail</b><p>contato_dyon@hotmail.com</p></div>
+          <svg class="ico channel-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+        </a>
+        <a class="channel-card" href="https://instagram.com/dyon_oficial_" target="_blank" rel="noopener">
+          <span class="channel-icon"><svg class="ico" aria-hidden="true"><use href="#i-instagram"/></svg></span>
+          <div><b>Seguir no Instagram</b><p>@dyon_oficial_</p></div>
+          <svg class="ico channel-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 13. CTA FINAL ==================== -->
+<section class="section cta-final">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="section-inner center">
+    <h2 class="cta-final-title">Seu evento merece mais do que organização.</h2>
+    <p class="cta-final-sub">Ele merece uma experiência.</p>
+    <div class="cta-final-brand">DYON</div>
+    <p class="cta-final-slogan">Seu evento. Sua experiência.</p>
+    <div class="hero-actions">
+      <a href="#contato" class="btn btn-gold">Entrar na lista de espera</a>
+      <a href="https://wa.me/5535999755191" target="_blank" rel="noopener" class="btn btn-outline-light">
+        <svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>Fale conosco
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer">
+  <div class="section-inner footer-inner">
+    <div class="footer-brand">
+      <span class="footer-logo">
+        <svg class="ico" aria-hidden="true"><use href="#i-diamond"/></svg>
+        DYON
+      </span>
+      <p>Tecnologia que transforma eventos em experiências.</p>
+    </div>
+    <nav class="footer-links" aria-label="Links do rodapé">
+      <span class="footer-heading">Navegação</span>
+      <a href="#inicio">Início</a>
+      <a href="#solucoes">Soluções</a>
+      <a href="#experiencia">Experiência</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <div class="footer-contact">
+      <span class="footer-heading">Contato</span>
+      <a href="mailto:contato_dyon@hotmail.com">contato_dyon@hotmail.com</a>
+      <a href="https://wa.me/5535999755191" target="_blank" rel="noopener">(35) 99975-5191</a>
+      <a href="https://instagram.com/dyon_oficial_" target="_blank" rel="noopener">@dyon_oficial_</a>
+    </div>
+  </div>
+  <p class="footer-copy">© 2026 Dyon. Todos os direitos reservados.</p>
+</footer>
+
+<!-- ==================== CTA FIXO MOBILE ==================== -->
+<div class="mobile-cta" id="mobileCta">
+  <a href="https://wa.me/5535999755191" target="_blank" rel="noopener" class="btn btn-gold btn-full">
+    <svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>Falar pelo WhatsApp
+  </a>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,2 @@
+# Padroniza a quebra de linha no repositório (evita diffs falsos entre Windows e Linux)
+* text=auto eol=lf

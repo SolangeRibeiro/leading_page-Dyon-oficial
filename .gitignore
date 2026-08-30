@@ -1,0 +1,12 @@
+# Lixo do Windows e do macOS
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Pastas de editor
+.vscode/
+.idea/
+
+# Temporários
+*.bak
+*.tmp
