@@ -421,6 +421,32 @@ img,svg{display:block; max-width:100%;}
 .audience-card b{font-family:var(--font-display); font-size:14.5px; display:block; margin-bottom:8px; letter-spacing:-.01em;}
 .audience-card p{font-size:12.5px; color:var(--ink-soft); line-height:1.5;}
 
+/* --- perguntas frequentes --- */
+.faq{display:flex; flex-direction:column; gap:12px; margin-top:44px; max-width:840px;}
+.faq-item{
+  background:var(--white); border:1px solid var(--line); border-radius:var(--radius-md);
+  box-shadow:var(--shadow-sm); overflow:hidden;
+  transition:border-color var(--t-fast), box-shadow var(--t-fast);
+}
+.faq-item:hover{border-color:var(--lavender-200); box-shadow:var(--shadow-md);}
+.faq-item[open]{border-color:var(--violet-400);}
+.faq-item summary{
+  display:flex; align-items:center; justify-content:space-between; gap:20px;
+  padding:20px 24px; cursor:pointer; list-style:none;
+  font-family:var(--font-display); font-weight:600; font-size:16px;
+  line-height:1.45; letter-spacing:-.01em; color:var(--ink);
+}
+.faq-item summary::-webkit-details-marker{display:none;}
+.faq-item summary::after{
+  content:""; flex-shrink:0; width:9px; height:9px; margin-top:-5px;
+  border-right:2px solid var(--violet-600); border-bottom:2px solid var(--violet-600);
+  transform:rotate(45deg); transition:transform var(--t-med), margin var(--t-med);
+}
+.faq-item[open] summary::after{transform:rotate(-135deg); margin-top:4px;}
+.faq-item summary:focus-visible{outline:2px solid var(--gold); outline-offset:-3px;}
+.faq-answer{padding:0 24px 22px;}
+.faq-answer p{font-size:14.5px; color:var(--ink-soft); line-height:1.75; max-width:70ch;}
+
 /* --- contato --- */
 .contact-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:64px;}
 .lead-form{display:flex; flex-direction:column; gap:18px; margin-top:32px;}
