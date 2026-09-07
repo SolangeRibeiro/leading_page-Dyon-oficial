@@ -1,0 +1,26 @@
+# robots.txt — Dyon
+# https://dyonoficial.com.br
+
+# Buscadores e assistentes de IA: liberado para indexar o site inteiro.
+User-agent: *
+Allow: /
+
+Sitemap: https://dyonoficial.com.br/sitemap.xml
+
+# --------------------------------------------------------------------------
+# Para BLOQUEAR o treinamento de IA com o conteúdo do site, descomente abaixo.
+# (Deixe comentado se quiser que a Dyon apareça nas respostas do ChatGPT,
+#  Claude, Perplexity e afins — normalmente é o que interessa para captar leads.)
+#
+# User-agent: GPTBot
+# Disallow: /
+#
+# User-agent: ClaudeBot
+# Disallow: /
+#
+# User-agent: Google-Extended
+# Disallow: /
+#
+# User-agent: CCBot
+# Disallow: /
+# --------------------------------------------------------------------------

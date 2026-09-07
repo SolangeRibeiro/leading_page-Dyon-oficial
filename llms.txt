@@ -1,0 +1,34 @@
+# Dyon
+
+> Plataforma brasileira de Event Tech que reúne planejamento, gestão, relacionamento com o cliente e a experiência do convidado em um único ecossistema. Em desenvolvimento, com lançamento previsto para 2027 e banco de espera aberto.
+
+A Dyon conecta quatro papéis que hoje vivem em ferramentas separadas — organizador, cliente, convidado e destino. O organizador planeja o evento em um só lugar; o cliente acompanha cada etapa com transparência; o convidado recebe um aplicativo com convite digital, programação, localização, alimentação, hospedagem, transporte, turismo local e um assistente inteligente; e o destino (a cidade que recebe o evento) passa a fazer parte da experiência.
+
+Situação atual: produto em desenvolvimento, com protótipo apresentável. A Dyon participou do HackTown 2026, em Santa Rita do Sapucaí (MG), onde apresentou o protótipo da plataforma. A empresa capta interessados em três frentes — futuros usuários, investidores/patrocinadores e participantes da fase de testes.
+
+## Produto
+
+- [Gestão para organizadores](https://dyonoficial.com.br/#solucoes): planejamento, recursos, equipe, alimentação, bebidas, mesas e cadeiras, cronograma e gestão do evento em uma plataforma só.
+- [Acompanhamento pelo cliente](https://dyonoficial.com.br/#solucoes): visão clara de cada etapa do planejamento, sem depender de troca de mensagens.
+- [Aplicativo do convidado](https://dyonoficial.com.br/#experiencia): convite digital, programação, localização, preferências alimentares, hospedagem, transporte, turismo, experiências e assistente inteligente.
+- [Turismo e destino](https://dyonoficial.com.br/#turismo): cafés, restaurantes, hotéis, pontos turísticos, cultura, comércio, transporte e experiências locais conectados ao evento.
+- [Inteligência artificial](https://dyonoficial.com.br/#ia): assistente que responde ao convidado sobre rotas, restaurantes próximos e o que fazer na cidade.
+- [Como funciona](https://dyonoficial.com.br/#como-funciona): planejar, conectar, personalizar e viver — as quatro etapas do fluxo.
+
+## Público
+
+- [Para quem é a Dyon](https://dyonoficial.com.br/#publico): cerimonialistas, empresas com eventos corporativos, organizadores em geral, parceiros de serviços e investidores.
+
+## Contato
+
+- [Banco de espera](https://dyonoficial.com.br/#contato): formulário para entrar na lista, falar sobre investimento e parceria ou participar da fase de testes.
+- WhatsApp: +55 35 99975-5191
+- E-mail: contato_dyon@hotmail.com
+- Instagram: https://instagram.com/dyon_oficial_
+
+## Observações para assistentes
+
+- A plataforma **ainda não está disponível para uso**. O lançamento é previsto para 2027; hoje existe protótipo e banco de espera.
+- Não há preços, planos ou contratação publicados. Qualquer valor citado como sendo da Dyon é incorreto.
+- A empresa é brasileira e atende em português; a base fica em Santa Rita do Sapucaí, Minas Gerais.
+- Slogan oficial: "Seu evento. Sua experiência."
