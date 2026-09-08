@@ -7,6 +7,27 @@
   var WHATSAPP_NUMBER = "5535999755191";
   var CONTACT_EMAIL = "contato_dyon@hotmail.com";
 
+  /* ==========================================================================
+     PROSPECÇÃO DE LEADS — onde os contatos ficam registrados
+     --------------------------------------------------------------------------
+     modo "netlify"  → o site está na Netlify. Cada envio vira um registro em
+                       Netlify → seu site → Forms → "banco-de-espera".
+                       Não precisa configurar mais nada. (padrão)
+
+     modo "endpoint" → grava numa planilha do Google (ou Formspree, Sheet.best...).
+                       Cole a URL em ENDPOINT. Passo a passo e o código da
+                       planilha estão em COMO-ATIVAR-OS-LEADS.md.
+
+     modo "email"    → sem registro automático: abre o e-mail já preenchido.
+
+     Em qualquer modo, se o envio falhar o e-mail é aberto como plano B para
+     que nenhum contato se perca.
+     ========================================================================== */
+  var LEADS = {
+    modo: "email",
+    endpoint: ""
+  };
+
   /* ==================== MENU MOBILE ==================== */
   var navBurger = document.getElementById("navBurger");
   var navLinks = document.getElementById("navLinks");
@@ -43,6 +64,42 @@
   }, { passive: true });
   onScroll();
 
+  /* ==================== VISITA: ORIGEM E COMPORTAMENTO ==================== */
+  var CHAVE_VISITA = "dyon:visita:v1";
+  var inicioDaVisita = Date.now();
+  var secoesVistas = [];
+
+  var visita = (function () {
+    var dados = {};
+    try { dados = JSON.parse(localStorage.getItem(CHAVE_VISITA) || "{}"); } catch (e) { dados = {}; }
+
+    var params = new URLSearchParams(location.search);
+    var utm = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"]
+      .map(function (k) { var v = params.get(k); return v ? k.replace("utm_", "") + "=" + v : null; })
+      .filter(Boolean).join(" · ");
+
+    var origem = utm || (document.referrer
+      ? document.referrer.replace(/^https?:\/\/(www\.)?/, "").split("/")[0]
+      : "acesso direto");
+
+    if (!dados.primeira) dados.primeira = new Date().toISOString();
+    if (!dados.origem || dados.origem === "acesso direto") dados.origem = origem;
+    dados.visitas = (dados.visitas || 0) + 1;
+
+    try { localStorage.setItem(CHAVE_VISITA, JSON.stringify(dados)); } catch (e) { /* modo privado */ }
+    return dados;
+  })();
+
+  function formatarData(iso) {
+    try { return new Date(iso).toLocaleString("pt-BR"); } catch (e) { return iso; }
+  }
+
+  function dispositivo() {
+    var tipo = window.matchMedia("(max-width: 760px)").matches ? "celular"
+      : window.matchMedia("(max-width: 1080px)").matches ? "tablet" : "computador";
+    return tipo + " · " + window.screen.width + "x" + window.screen.height;
+  }
+
   /* ==================== NAV: SEÇÃO ATIVA ==================== */
   var navMap = {};
   navLinks.querySelectorAll('a[href^="#"]').forEach(function (a) {
@@ -50,18 +107,27 @@
     if (document.getElementById(id)) navMap[id] = a;
   });
 
+  var titulos = {};
+  document.querySelectorAll("section[id]").forEach(function (s) {
+    var h = s.querySelector("h1, h2");
+    var texto = h ? (h.innerText || h.textContent) : s.id;
+    titulos[s.id] = texto.trim().replace(/\s+/g, " ").slice(0, 40);
+  });
+
   var sectionObserver = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (!entry.isIntersecting) return;
-      Object.keys(navMap).forEach(function (id) {
-        navMap[id].classList.toggle("active", id === entry.target.id);
-      });
+      var id = entry.target.id;
+      if (secoesVistas.indexOf(id) === -1) secoesVistas.push(id);
+      if (navMap[id]) {
+        Object.keys(navMap).forEach(function (k) {
+          navMap[k].classList.toggle("active", k === id);
+        });
+      }
     });
   }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
 
-  Object.keys(navMap).forEach(function (id) {
-    sectionObserver.observe(document.getElementById(id));
-  });
+  document.querySelectorAll("section[id]").forEach(function (s) { sectionObserver.observe(s); });
 
   /* ==================== REVEAL AO ROLAR ==================== */
   var revealTargets = document.querySelectorAll(
@@ -109,9 +175,10 @@
     });
   });
 
-  /* ==================== FORMULÁRIO DE LEADS ==================== */
+  /* ==================== FORMULÁRIO: VALIDAÇÃO ==================== */
   var leadForm = document.getElementById("leadForm");
   var leadSuccess = document.getElementById("leadSuccess");
+  var leadSubmit = document.getElementById("leadSubmit");
 
   function fieldOf(input) { return input.closest(".field"); }
 
@@ -181,36 +248,122 @@
     whatsInput.value = out;
   });
 
+  /* ==================== FORMULÁRIO: ENVIO E REGISTRO ==================== */
+  function preencherCamposDeProspeccao() {
+    var interesses = Array.prototype.filter.call(interestBtns, function (b) {
+      return b.classList.contains("active");
+    }).map(function (b) { return b.dataset.interest; });
+
+    var vistas = secoesVistas.map(function (id) { return titulos[id] || id; });
+
+    var valores = {
+      fInterest: interesses.length ? interesses.join(" | ") : "-",
+      fOrigem: visita.origem || "acesso direto",
+      fReferrer: document.referrer || "-",
+      fFirstSeen: formatarData(visita.primeira),
+      fVisits: String(visita.visitas || 1),
+      fSections: vistas.length ? vistas.join(" › ") : "-",
+      fTime: Math.round((Date.now() - inicioDaVisita) / 1000) + "s",
+      fDevice: dispositivo(),
+      fSentAt: new Date().toLocaleString("pt-BR")
+    };
+
+    Object.keys(valores).forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) el.value = valores[id];
+    });
+  }
+
+  function corpoDoEmail(dados) {
+    return "Nome: " + dados.nome +
+      "\nEmpresa: " + (dados.empresa || "-") +
+      "\nE-mail: " + dados.email +
+      "\nWhatsApp: " + dados.whatsapp +
+      "\nPerfil: " + dados.perfil +
+      "\nInteresse: " + dados.interesse +
+      "\n\nMensagem:\n" + (dados.mensagem || "-") +
+      "\n\n--- Prospecção ---" +
+      "\nOrigem: " + dados.origem +
+      "\nPágina de origem: " + dados.pagina_de_origem +
+      "\nPrimeira visita: " + dados.primeira_visita +
+      "\nVisitas: " + dados.visitas +
+      "\nSeções vistas: " + dados.secoes_vistas +
+      "\nTempo no site: " + dados.tempo_no_site +
+      "\nDispositivo: " + dados.dispositivo +
+      "\nEnviado em: " + dados.enviado_em;
+  }
+
+  function abrirEmail(dados) {
+    var assunto = encodeURIComponent("Novo contato pelo site — " + dados.nome);
+    var corpo = encodeURIComponent(corpoDoEmail(dados));
+    window.location.href = "mailto:" + CONTACT_EMAIL + "?subject=" + assunto + "&body=" + corpo;
+  }
+
+  function registrarLead(dados) {
+    var corpo = new URLSearchParams(dados).toString();
+
+    if (LEADS.modo === "netlify") {
+      return fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: corpo
+      }).then(function (r) {
+        if (!r.ok) throw new Error("HTTP " + r.status);
+        return true;
+      });
+    }
+
+    if (LEADS.modo === "endpoint" && LEADS.endpoint) {
+      return fetch(LEADS.endpoint, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: corpo
+      }).then(function () { return true; });
+    }
+
+    return Promise.reject(new Error("sem-registro"));
+  }
+
+  function mostrarSucesso(texto) {
+    if (texto) leadSuccess.querySelector("p").textContent = texto;
+    leadForm.style.display = "none";
+    leadSuccess.classList.add("show");
+    leadSuccess.scrollIntoView({ block: "center", behavior: "smooth" });
+  }
+
   leadForm.addEventListener("submit", function (e) {
     e.preventDefault();
     if (!validate()) return;
 
-    var val = function (id) { return document.getElementById(id).value.trim(); };
-    var interests = Array.prototype.filter.call(interestBtns, function (b) {
-      return b.classList.contains("active");
-    }).map(function (b) { return b.dataset.interest; });
+    preencherCamposDeProspeccao();
 
-    var subject = encodeURIComponent("Novo contato pelo site — " + val("fName"));
-    var body = encodeURIComponent(
-      "Nome: " + val("fName") +
-      "\nEmpresa: " + (val("fCompany") || "-") +
-      "\nE-mail: " + val("fEmail") +
-      "\nWhatsApp: " + val("fWhats") +
-      "\nPerfil: " + document.getElementById("fProfile").value +
-      "\nInteresse: " + (interests.length ? interests.join(" | ") : "-") +
-      "\n\nMensagem:\n" + (val("fMsg") || "-")
-    );
-
-    /* Abre o e-mail já preenchido com os dados do lead para a equipe Dyon */
-    window.location.href = "mailto:" + CONTACT_EMAIL + "?subject=" + subject + "&body=" + body;
-
-    leadForm.reset();
-    interestBtns.forEach(function (b) {
-      b.classList.remove("active");
-      b.setAttribute("aria-pressed", "false");
+    var dados = {};
+    new FormData(leadForm).forEach(function (valor, chave) {
+      if (chave !== "bot-field") dados[chave] = valor;
     });
-    leadForm.style.display = "none";
-    leadSuccess.classList.add("show");
+
+    leadSubmit.disabled = true;
+    leadSubmit.textContent = "Enviando…";
+
+    registrarLead(dados)
+      .then(function () {
+        mostrarSucesso("Obrigado! Você entrou para o banco de espera da Dyon — em breve entraremos em contato.");
+      })
+      .catch(function () {
+        /* Plano B: nenhum contato se perde */
+        abrirEmail(dados);
+        mostrarSucesso("Quase lá! Abrimos seu aplicativo de e-mail com a mensagem pronta — é só tocar em enviar.");
+      })
+      .then(function () {
+        leadForm.reset();
+        interestBtns.forEach(function (b) {
+          b.classList.remove("active");
+          b.setAttribute("aria-pressed", "false");
+        });
+        leadSubmit.disabled = false;
+        leadSubmit.textContent = "Quero falar com a Dyon";
+      });
   });
 
   /* ==================== ANO DO RODAPÉ ==================== */
