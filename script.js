@@ -8,15 +8,16 @@
   var CONTACT_EMAIL = "contato_dyon@hotmail.com";
 
   /* ==========================================================================
-     PROSPECÇÃO DE LEADS — onde os contatos ficam registrados
+     BANCO DE ESPERA — para onde vai quem se cadastra
      --------------------------------------------------------------------------
-     modo "netlify"  → o site está na Netlify. Cada envio vira um registro em
-                       Netlify → seu site → Forms → "banco-de-espera".
-                       Não precisa configurar mais nada. (padrão)
+     modo "axis"     → manda para a Áxis Agenda. A pessoa aparece na aba
+                       "Enviar" do painel, com a mensagem de convite pronta
+                       para marcar um horário. (padrão)
 
-     modo "endpoint" → grava numa planilha do Google (ou Formspree, Sheet.best...).
-                       Cole a URL em ENDPOINT. Passo a passo e o código da
-                       planilha estão em COMO-ATIVAR-OS-LEADS.md.
+     modo "endpoint" → grava numa planilha do Google (ou Formspree).
+                       Passo a passo em COMO-ATIVAR-OS-LEADS.md.
+
+     modo "netlify"  → só funciona se o site estiver hospedado na Netlify.
 
      modo "email"    → sem registro automático: abre o e-mail já preenchido.
 
@@ -24,8 +25,9 @@
      que nenhum contato se perca.
      ========================================================================== */
   var LEADS = {
-    modo: "email",
-    endpoint: ""
+    modo: "axis",
+    endpoint: "https://axis-agenda-ten.vercel.app/api/interessados",
+    agenda: "dyon"
   };
 
   /* ==================== MENU MOBILE ==================== */
@@ -301,6 +303,17 @@
 
   function registrarLead(dados) {
     var corpo = new URLSearchParams(dados).toString();
+
+    if (LEADS.modo === "axis") {
+      return fetch(LEADS.endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(Object.assign({ corretor: LEADS.agenda }, dados))
+      }).then(function (r) {
+        if (!r.ok) throw new Error("HTTP " + r.status);
+        return true;
+      });
+    }
 
     if (LEADS.modo === "netlify") {
       return fetch("/", {
