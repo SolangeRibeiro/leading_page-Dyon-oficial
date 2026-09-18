@@ -423,10 +423,6 @@ img,svg{display:block; max-width:100%;}
 .schedule-option .ico{font-size:18px; color:var(--gold);}
 .schedule-option:hover{background:rgba(201,168,118,.14); border-color:var(--gold); transform:translateY(-2px);}
 .schedule-option:active{transform:scale(.97);}
-.schedule-ou{
-  margin:8px 0 0; font-family:var(--font-display); font-size:11.5px; font-weight:600;
-  letter-spacing:.16em; text-transform:uppercase; color:var(--lavender-200); opacity:.6;
-}
 .schedule-confirm{font-size:15px; color:var(--lavender-200); max-width:44ch; text-align:center; line-height:1.6;}
 
 /* --- hacktown --- */
