@@ -379,6 +379,18 @@
       });
   });
 
+  /* ==================== GESTOS: PÁGINA PARADA (3 de 3) ====================
+     O iPhone ignora "user-scalable=no" desde o iOS 10, e o touch-action do CSS
+     só vale a partir do Safari 13. Barrar o gesto de pinça é o que fecha a
+     conta nos aparelhos mais antigos.
+
+     Para voltar a permitir zoom, apague este bloco inteiro e os dois trechos
+     marcados "PAGINA PARADA NO CELULAR" no style.css, além do viewport no
+     index.html. */
+  ['gesturestart', 'gesturechange', 'gestureend'].forEach(function (gesto) {
+    document.addEventListener(gesto, function (e) { e.preventDefault(); }, { passive: false });
+  });
+
   /* ==================== ANO DO RODAPÉ ==================== */
   var copy = document.querySelector(".footer-copy");
   if (copy) copy.textContent = "© " + new Date().getFullYear() + " Dyon. Todos os direitos reservados.";

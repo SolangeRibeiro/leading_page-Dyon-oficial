@@ -52,7 +52,20 @@
 
 /* ==================== 2. BASE ==================== */
 *{box-sizing:border-box; margin:0; padding:0;}
-html{scroll-behavior:smooth; -webkit-text-size-adjust:100%;}
+html{
+  scroll-behavior:smooth; -webkit-text-size-adjust:100%;
+  /* PAGINA PARADA NO CELULAR (1 de 3)
+     pan-x/pan-y deixam rolar, mas tiram a pinça e o duplo-toque.
+     Para voltar a permitir zoom: apague este touch-action, o do body,
+     o trecho do viewport no index.html e o bloco "GESTOS" do script.js. */
+  touch-action:pan-x pan-y;
+
+  /* O overflow-x do body sozinho não impedia arrastar a página de lado: o
+     mockup dos celulares vazava alguns pixels e dava para deslizar na
+     horizontal. Aqui trava de vez — a página só se move para cima e para
+     baixo, nunca para os lados. */
+  overflow-x:hidden;
+}
 body{
   font-family:var(--font-body);
   font-size:16px;
@@ -63,6 +76,7 @@ body{
   -moz-osx-font-smoothing:grayscale;
   font-feature-settings:"kern" 1,"liga" 1;
   overflow-x:hidden;
+  touch-action:pan-x pan-y;
 }
 h1,h2,h3{font-family:var(--font-display); text-wrap:balance;}
 p{text-wrap:pretty;}
@@ -80,6 +94,16 @@ img,svg{display:block; max-width:100%;}
   padding:12px 22px; border-radius:0 0 var(--radius-md) var(--radius-md); transition:top var(--t-fast);
 }
 .skip-link:focus{top:0;}
+
+
+/* PAGINA PARADA NO CELULAR (2 de 3)
+   O iPhone dá zoom sozinho em qualquer campo com fonte menor que 16px — e não
+   desfaz o zoom depois. Em aparelho de toque, todo campo passa a 16px.
+   O !important existe porque há regras de tamanho espalhadas pelo arquivo;
+   aqui é limitação da plataforma, não preferência. */
+@media (pointer: coarse){
+  input, select, textarea{font-size:16px !important;}
+}
 
 @media (prefers-reduced-motion: reduce){
   *{animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; scroll-behavior:auto !important;}
@@ -455,7 +479,7 @@ img,svg{display:block; max-width:100%;}
 .field label, .field-label{font-size:12px; font-weight:600; color:var(--lavender-200); letter-spacing:.02em;}
 .field input, .field select, .field textarea{
   background:rgba(255,255,255,.05); border:1px solid var(--line-light); border-radius:var(--radius-sm);
-  padding:13px 15px; color:var(--white); font-size:14px; font-family:inherit; outline:none; resize:vertical;
+  padding:13px 15px; color:var(--white); font-size:15px; font-family:inherit; outline:none; resize:vertical;
   transition:border-color var(--t-fast), box-shadow var(--t-fast), background var(--t-fast);
 }
 .field input::placeholder, .field textarea::placeholder{color:rgba(220,212,242,.4);}
