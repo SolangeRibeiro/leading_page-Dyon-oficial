@@ -279,6 +279,50 @@ img,svg{display:block; max-width:100%;}
 .problem-text{font-size:16.5px; color:var(--ink-soft); line-height:1.7; max-width:66ch;}
 .problem-punch{font-family:var(--font-display); font-size:clamp(19px,2.2vw,23px); font-weight:700; margin-top:28px; color:var(--violet-800); letter-spacing:-.01em;}
 
+/* --- o tamanho da oportunidade --- */
+.section-title.wide{max-width:26ch;}
+.stat-grid{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:18px; margin-top:44px;}
+.stat-card{
+  background:var(--surface-light); border:1px solid var(--line-light);
+  border-radius:var(--radius-lg); padding:26px 24px 24px; min-width:0;
+  transition:transform var(--t-med), border-color var(--t-med);
+}
+.stat-card:hover{transform:translateY(-4px); border-color:var(--line-light-strong);}
+.stat-num{
+  font-family:var(--font-display); font-size:clamp(25px,2.5vw,33px); font-weight:700;
+  letter-spacing:-.02em; line-height:1.06; color:var(--gold);
+}
+.stat-num.violet{color:var(--violet-400);}
+.stat-num.soft{color:var(--gold-soft);}
+.stat-num.lav{color:var(--lavender-200);}
+.stat-label{margin-top:12px; font-size:14px; line-height:1.5; color:var(--lavender-200);}
+.fonte{margin-top:26px; font-size:13px; color:var(--lavender-200); opacity:.72;}
+
+/* --- a dor que ninguém automatizou --- */
+.gap-grid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; margin-top:44px;}
+.gap-card{display:flex; flex-direction:column; justify-content:center; padding:34px 30px;}
+.gap-card.destaque{
+  background:linear-gradient(160deg, rgba(124,58,237,.34), rgba(255,255,255,.04));
+  border-color:var(--line-light-strong);
+}
+.gap-row + .gap-row{margin-top:28px;}
+.gap-when{
+  font-family:var(--font-display); font-size:11.5px; font-weight:700;
+  letter-spacing:.18em; text-transform:uppercase; color:var(--lavender-200);
+}
+.gap-when.now{color:var(--gold);}
+.gap-value{
+  font-family:var(--font-display); font-size:clamp(33px,4.2vw,52px); font-weight:700;
+  line-height:1.06; letter-spacing:-.02em; color:var(--lavender-200); margin-top:6px;
+}
+.gap-value.now{color:var(--gold);}
+.gap-big{
+  font-family:var(--font-display); font-size:clamp(42px,5.8vw,70px); font-weight:800;
+  line-height:1; letter-spacing:-.03em; color:var(--white);
+}
+.gap-desc{margin-top:18px; font-size:15px; line-height:1.6; color:var(--lavender-200);}
+.gap-punch{margin-top:22px; font-size:15.5px; font-weight:600; color:var(--gold);}
+
 /* --- solução --- */
 .pillar-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:48px;}
 .pillar-card{
@@ -599,6 +643,8 @@ img,svg{display:block; max-width:100%;}
 
 /* menu compacto antes do layout mobile: o nav completo não cabe abaixo de ~900px */
 @media (max-width:900px){
+  .stat-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .gap-grid{grid-template-columns:1fr;}
   .nav-links{
     position:absolute; top:100%; left:0; right:0;
     background:var(--ink); box-shadow:0 24px 44px -22px rgba(0,0,0,.85);
@@ -640,6 +686,11 @@ img,svg{display:block; max-width:100%;}
   .footer-inner{grid-template-columns:1fr; gap:30px;}
   .btn-lg{padding:17px 26px; font-size:15px;}
   .cta-final-brand{letter-spacing:.06em;}
+}
+
+@media (max-width:520px){
+  .stat-grid{grid-template-columns:1fr;}
+  .gap-card{padding:28px 24px;}
 }
 
 @media (max-width:420px){
