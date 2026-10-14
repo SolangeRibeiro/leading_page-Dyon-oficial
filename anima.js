@@ -54,13 +54,27 @@
   function contar(el, dados) {
     var inicio = null;
     var duracao = 1500;
+    var pronto = false;
+
+    function concluir() {
+      if (pronto) return;
+      pronto = true;
+      el.textContent = dados.original;   // devolve exatamente o que estava no HTML
+      el.style.minWidth = '';            // presa, ela estoura a tela se o aparelho girar
+    }
+
+    // Rede de segurança: se a animação não terminar — aba escondida por muito
+    // tempo, quadro travado, qualquer coisa — o número verdadeiro volta sozinho.
+    // Nesta página há dados de mercado: é melhor não animar do que mostrar zero.
+    setTimeout(concluir, 8000);
 
     function passo(agora) {
+      if (pronto) return;
       if (inicio === null) inicio = agora;
       var t = Math.min((agora - inicio) / duracao, 1);
       el.textContent = dados.prefixo + formatar(dados.valor * EASE(t), dados.casas) + dados.sufixo;
-      if (t < 1) requestAnimationFrame(passo);
-      else el.textContent = dados.original;   // devolve exatamente o que estava no HTML
+      if (t < 1) { requestAnimationFrame(passo); return; }
+      concluir();
     }
     requestAnimationFrame(passo);
   }
@@ -70,22 +84,33 @@
     if (!alvos.length || !('IntersectionObserver' in window)) return;
     if (MENOS_MOVIMENTO) return;   // o HTML já mostra o valor final
 
+    // O número só é zerado no instante em que a contagem começa. Zerar tudo no
+    // carregamento parecia mais simples, mas significava que qualquer falha
+    // depois disso — observador que não dispara, quadro que não roda — deixava
+    // a seção de mercado exibindo zeros para um investidor. O valor do HTML
+    // fica intocado até o último momento possível.
     var observador = new IntersectionObserver(function (entradas) {
       entradas.forEach(function (entrada) {
         if (!entrada.isIntersecting) return;
-        observador.unobserve(entrada.target);
-        var dados = entrada.target.__num;
-        if (dados) contar(entrada.target, dados);
+        var el = entrada.target;
+        observador.unobserve(el);
+        var dados = el.__num;
+        if (!dados) return;
+
+        // Trava a largura para o cartão não "pular", sem passar do espaço
+        // disponível — se o aparelho girar, a trava não estoura a tela.
+        el.style.maxWidth = '100%';
+        el.style.minWidth = Math.min(el.getBoundingClientRect().width,
+                                     el.parentElement.clientWidth) + 'px';
+        el.textContent = dados.prefixo + formatar(0, dados.casas) + dados.sufixo;
+        contar(el, dados);
       });
-    }, { threshold: 0.6 });
+    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
 
     alvos.forEach(function (el) {
       var dados = interpretar(el.textContent);
       if (!dados) return;
       el.__num = dados;
-      // Trava a largura antes de zerar, senão o cartão "pula" durante a contagem.
-      el.style.minWidth = el.getBoundingClientRect().width + 'px';
-      el.textContent = dados.prefixo + formatar(0, dados.casas) + dados.sufixo;
       observador.observe(el);
     });
   });
