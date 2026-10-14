@@ -179,8 +179,10 @@ img,svg{display:block; max-width:100%;}
 }
 .nav.scrolled{background:rgba(15,10,31,.92); border-bottom-color:var(--line-light); box-shadow:0 10px 30px -18px rgba(0,0,0,.9);}
 .nav-inner{max-width:1160px; margin:0 auto; padding:15px 32px; display:flex; align-items:center; justify-content:space-between; gap:24px;}
-.nav-logo{display:inline-flex; align-items:center; gap:10px; font-family:var(--font-display); font-weight:800; font-size:18px; letter-spacing:.28em; color:var(--white);}
-.nav-logo-mark{font-size:18px; color:var(--gold); stroke-width:2;}
+/* Logo oficial: a palavra DYON inteira, recortada do arquivo da marca com o
+   fundo removido. É a letra oficial, não uma fonte parecida. */
+.nav-logo{display:inline-flex; align-items:center;}
+.nav-logo-img{height:21px; width:auto; flex:none; display:block;}
 .nav-links{display:flex; gap:30px;}
 .nav-links a{position:relative; font-size:13.5px; font-weight:500; color:var(--lavender-200); padding:4px 0; transition:color var(--t-fast);}
 .nav-links a::after{
@@ -216,6 +218,12 @@ img,svg{display:block; max-width:100%;}
   animation:glow-drift 14s ease-in-out infinite alternate;
 }
 .hero-glow.subtle{opacity:.55;}
+/* rede de partículas — fundo decorativo, atrás do conteúdo (ver anima.js) */
+.hero-rede{
+  position:absolute; inset:0; width:100%; height:100%;
+  z-index:1; pointer-events:none;
+}
+
 .hero-lines{
   position:absolute; inset:0; z-index:0; pointer-events:none; opacity:.35;
   background-image:linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
@@ -287,6 +295,7 @@ img,svg{display:block; max-width:100%;}
   border-radius:var(--radius-lg); padding:26px 24px 24px; min-width:0;
   transition:transform var(--t-med), border-color var(--t-med);
 }
+.stat-card{transition:transform var(--t-med), border-color var(--t-med), box-shadow var(--t-med);}
 .stat-card:hover{transform:translateY(-4px); border-color:var(--line-light-strong);}
 .stat-num{
   font-family:var(--font-display); font-size:clamp(25px,2.5vw,33px); font-weight:700;
@@ -296,6 +305,13 @@ img,svg{display:block; max-width:100%;}
 .stat-num.soft{color:var(--gold-soft);}
 .stat-num.lav{color:var(--lavender-200);}
 .stat-label{margin-top:12px; font-size:14px; line-height:1.5; color:var(--lavender-200);}
+
+/* o indicador de R$ 140,9 bi carrega o argumento: ganha mais peso visual */
+.stat-card-destaque{
+  background:linear-gradient(160deg, rgba(201,168,118,.16), rgba(255,255,255,.04));
+  border-color:rgba(201,168,118,.42);
+}
+.stat-card-destaque .stat-num{font-size:clamp(29px,3vw,40px);}
 .fonte{margin-top:26px; font-size:13px; color:var(--lavender-200); opacity:.72;}
 
 /* --- a dor que ninguém automatizou --- */
@@ -305,7 +321,6 @@ img,svg{display:block; max-width:100%;}
   background:linear-gradient(160deg, rgba(124,58,237,.34), rgba(255,255,255,.04));
   border-color:var(--line-light-strong);
 }
-.gap-row + .gap-row{margin-top:28px;}
 .gap-when{
   font-family:var(--font-display); font-size:11.5px; font-weight:700;
   letter-spacing:.18em; text-transform:uppercase; color:var(--lavender-200);
@@ -322,6 +337,44 @@ img,svg{display:block; max-width:100%;}
 }
 .gap-desc{margin-top:18px; font-size:15px; line-height:1.6; color:var(--lavender-200);}
 .gap-punch{margin-top:22px; font-size:15.5px; font-weight:600; color:var(--gold);}
+
+/* GRÁFICO DE BARRAS VERTICAIS
+   Duas colunas, altura proporcional ao número real: 47.262 é 43,3% de 109.025.
+   Crescem de baixo para cima com a rolagem (anima.js); sem JavaScript já
+   aparecem na altura certa. */
+.grafico{
+  display:grid; grid-template-columns:1fr 1fr; gap:clamp(20px,5vw,52px);
+  align-items:end; height:clamp(220px,32vw,300px); margin-top:6px;
+}
+.grafico-col{display:flex; flex-direction:column; align-items:center; height:100%; min-width:0;}
+.grafico-col .gap-value{
+  margin:0 0 14px; font-size:clamp(24px,3.2vw,36px); white-space:nowrap;
+}
+.grafico-barra{
+  flex:1; width:100%; max-width:132px; margin:0 auto;
+  display:flex; align-items:flex-end;
+  border-bottom:1px solid var(--line-light-strong);
+}
+.grafico-barra > span{
+  display:block; width:100%; border-radius:12px 12px 0 0;
+  background:linear-gradient(180deg, var(--violet-400) 0%, rgba(167,139,250,.12) 100%);
+  transform-origin:bottom;
+}
+/* a coluna de 2025 é o argumento da seção: cor quente, viva, com brilho */
+.grafico-barra > span.agora{
+  background:linear-gradient(180deg,#FFD66B 0%,#F0A93B 30%,#C2491F 68%,#7C3AED 100%);
+  box-shadow:0 0 52px -6px rgba(240,169,59,.6);
+}
+.grafico-col .gap-when{margin-top:16px; text-align:center;}
+.grafico-legenda{
+  margin-top:24px; text-align:center; font-size:12.5px;
+  color:var(--lavender-200); opacity:.65;
+}
+
+.gap-mensagem{
+  margin-top:36px; font-family:var(--font-display); font-size:clamp(18px,2.2vw,22px);
+  font-weight:600; line-height:1.45; color:var(--white); max-width:36ch;
+}
 
 /* --- solução --- */
 .pillar-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:48px;}
@@ -345,6 +398,54 @@ img,svg{display:block; max-width:100%;}
 .pillar-desc{font-size:14px; color:var(--ink-soft); line-height:1.6;}
 .pillar-list{display:flex; flex-wrap:wrap; gap:6px; margin-top:20px;}
 .pillar-list li{background:var(--lavender-50); border:1px solid var(--line); border-radius:var(--radius-pill); padding:5px 12px; font-size:11.5px; font-weight:500; color:var(--ink-soft);}
+
+/* --- o computador com a plataforma ---
+   Mesmos módulos, números e eventos do protótipo real da Dyon. A paleta clara
+   por dentro é a da própria plataforma (#F6F5FB sobre violeta), e não a do
+   site: é a tela do produto, não um cartão da página. */
+.plataforma{display:flex; flex-direction:column; align-items:center; gap:18px; margin:48px 0 8px;}
+.laptop{width:min(100%,880px); perspective:1600px;}
+.laptop-tela{
+  position:relative; padding:11px; border-radius:16px 16px 5px 5px;
+  background:linear-gradient(165deg,#2A2250,#14102A);
+  box-shadow:0 48px 90px -34px rgba(27,14,61,.55), 0 0 0 1px rgba(27,14,61,.10);
+  transform:rotateX(7deg); transform-origin:bottom center;
+  transition:transform .6s var(--ease);
+}
+.laptop-base{
+  width:min(100%,104%); max-width:none; height:14px; margin:0 auto;
+  background:linear-gradient(180deg,#30275C,#191338);
+  border-radius:0 0 16px 16px;
+  box-shadow:0 20px 34px -18px rgba(27,14,61,.5);
+}
+.app{
+  display:grid; grid-template-columns:154px 1fr; text-align:left;
+  background:#F6F5FB; border-radius:9px; overflow:hidden; min-height:338px;
+}
+.app-lado{display:flex; flex-direction:column; gap:3px; padding:16px 12px; background:#1a1030;}
+.app-marca{font-family:var(--font-display); font-weight:800; font-size:13px; letter-spacing:.22em; color:#fff; margin-bottom:14px;}
+.app-grupo{font-size:8.5px; letter-spacing:.16em; text-transform:uppercase; color:rgba(221,214,254,.45); margin:10px 0 4px;}
+.app-item{font-size:11px; color:#DDD6FE; padding:6px 9px; border-radius:6px;}
+.app-item.ativo{background:#5B3CC4; color:#fff; font-weight:600;}
+.app-corpo{padding:16px 18px; display:flex; flex-direction:column; gap:14px; min-width:0;}
+.app-topo{display:flex; align-items:center; justify-content:space-between; gap:12px;}
+.app-ola b{display:block; font-family:var(--font-display); font-size:15px; color:#1c1726;}
+.app-ola span{font-size:10.5px; color:#6b6579;}
+.app-botao{background:#5B3CC4; color:#fff; font-size:10px; font-weight:600; padding:7px 13px; border-radius:7px; white-space:nowrap;}
+.app-kpis{display:grid; grid-template-columns:repeat(4,1fr); gap:9px;}
+.app-kpis > div{background:#fff; border:1px solid #ecebf3; border-radius:9px; padding:10px 11px; min-width:0;}
+.app-num{display:block; font-family:var(--font-display); font-size:19px; font-weight:700; color:#2a1957; line-height:1.1;}
+.app-kpis span{font-size:8.5px; color:#6b6579; line-height:1.3; display:block; margin-top:3px;}
+.app-lista{background:#fff; border:1px solid #ecebf3; border-radius:9px; padding:12px 13px; display:flex; flex-direction:column; gap:9px;}
+.app-lista-t{font-family:var(--font-display); font-size:11px; font-weight:700; color:#1c1726;}
+.app-linha{display:flex; align-items:center; gap:10px; min-width:0;}
+.app-linha i{
+  font-style:normal; font-size:8px; font-weight:700; letter-spacing:.08em;
+  background:#EDE9FE; color:#5B3CC4; padding:4px 6px; border-radius:5px; flex:none;
+}
+.app-linha b{font-size:10.5px; font-weight:500; color:#3d3650; flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.app-linha em{font-style:normal; font-size:8.5px; color:#866e23; background:#FBF3DA; padding:3px 7px; border-radius:20px; flex:none;}
+.plataforma figcaption{font-size:12.5px; color:var(--ink-faint); text-align:center;}
 
 /* --- experiência do convidado --- */
 .guest-showcase{display:grid; grid-template-columns:.85fr 1fr; gap:64px; align-items:center; margin-top:60px;}
@@ -596,11 +697,11 @@ img,svg{display:block; max-width:100%;}
 }
 .cta-final-title{font-size:clamp(27px,3.4vw,40px); font-weight:700; max-width:20ch; letter-spacing:-.02em;}
 .cta-final-sub{font-size:17px; color:var(--lavender-200); margin-top:12px;}
+/* A palavra da marca, em vetor: a letra oficial com o gradiente da logo.
+   Era texto com gradiente numa fonte parecida; agora é o desenho real. */
+/* A logo oficial: o símbolo colorido e, ao lado, as letras em branco. */
 .cta-final-brand{
-  font-family:var(--font-display); font-weight:800; font-size:clamp(52px,9vw,112px); letter-spacing:.12em;
-  margin-top:36px; line-height:1;
-  background:linear-gradient(110deg,var(--gold-soft) 0%,var(--gold) 45%,var(--violet-400) 100%);
-  -webkit-background-clip:text; background-clip:text; color:transparent;
+  display:block; width:min(520px,80vw); height:auto; margin:40px auto 0;
 }
 .cta-final-slogan{font-size:14.5px; color:var(--ink-faint); margin-top:10px; font-style:italic; letter-spacing:.02em;}
 
@@ -645,6 +746,8 @@ img,svg{display:block; max-width:100%;}
 @media (max-width:900px){
   .stat-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
   .gap-grid{grid-template-columns:1fr;}
+  .app{grid-template-columns:1fr;}
+  .app-lado{display:none;}
   .nav-links{
     position:absolute; top:100%; left:0; right:0;
     background:var(--ink); box-shadow:0 24px 44px -22px rgba(0,0,0,.85);
@@ -663,6 +766,7 @@ img,svg{display:block; max-width:100%;}
 
 @media (max-width:760px){
   .nav-inner{padding:14px 24px;}
+  .nav-logo-img{height:18px;}
   .nav-links{padding:18px 24px 22px;}
   .section{padding:80px 0;}
   .section-inner{padding:0 24px;}
@@ -685,12 +789,14 @@ img,svg{display:block; max-width:100%;}
   .footer{padding-bottom:104px;}
   .footer-inner{grid-template-columns:1fr; gap:30px;}
   .btn-lg{padding:17px 26px; font-size:15px;}
-  .cta-final-brand{letter-spacing:.06em;}
+  .cta-final-brand{width:min(320px,84vw);}
 }
 
 @media (max-width:520px){
   .stat-grid{grid-template-columns:1fr;}
   .gap-card{padding:28px 24px;}
+  .app-kpis{grid-template-columns:repeat(2,1fr);}
+  .laptop-tela{transform:none;}
 }
 
 @media (max-width:420px){
