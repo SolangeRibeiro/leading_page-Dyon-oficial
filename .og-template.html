@@ -1,0 +1,46 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1200px;height:630px;overflow:hidden;
+  font-family:'Inter',sans-serif;background:#0F0A1F;position:relative;
+  display:flex;flex-direction:column;justify-content:center;padding:0 86px}
+.glow{position:absolute;inset:0;
+  background:radial-gradient(78% 86% at 22% 8%, #4C1D95 0%, rgba(76,29,149,0) 62%),
+             radial-gradient(60% 70% at 92% 96%, #2E1065 0%, rgba(46,16,101,0) 60%),
+             linear-gradient(160deg,#1B0E3D 0%,#0F0A1F 72%)}
+.grid{position:absolute;inset:0;opacity:.35;
+  background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+  background-size:72px 72px;
+  -webkit-mask-image:radial-gradient(ellipse 70% 62% at 32% 34%,#000 18%,transparent 76%)}
+.c{position:relative;z-index:2}
+.logo{height:52px;width:auto;display:block;margin-bottom:46px}
+.eyebrow{font-family:'Sora',sans-serif;font-size:17px;font-weight:700;letter-spacing:.2em;
+  text-transform:uppercase;color:#C9A876;display:flex;align-items:center;gap:16px;margin-bottom:26px}
+.eyebrow::before{content:"";width:52px;height:1.5px;background:#C9A876;opacity:.75}
+h1{font-family:'Sora',sans-serif;font-size:76px;font-weight:800;line-height:1.04;
+  letter-spacing:-.025em;color:#fff}
+h1 span{background:linear-gradient(94deg,#E7D9BC 0%,#C9A876 38%,#A78BFA 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+p{font-size:25px;line-height:1.5;color:#DCD4F2;max-width:28ch;margin-top:28px}
+.badge{position:absolute;left:86px;bottom:54px;z-index:2;display:flex;align-items:center;gap:13px;
+  font-size:19px;font-weight:600;color:#E7D9BC;
+  border:1px solid rgba(201,168,118,.42);border-radius:999px;padding:13px 26px;
+  background:rgba(201,168,118,.09)}
+.dot{width:9px;height:9px;border-radius:50%;background:#C9A876}
+.url{position:absolute;right:86px;bottom:54px;z-index:2;font-family:'Sora',sans-serif;
+  font-size:19px;font-weight:600;color:#928CA1;letter-spacing:.02em}
+</style></head><body>
+<div class="glow"></div><div class="grid"></div>
+<div class="c">
+  <img class="logo" src="logo-dyon-branco.png" alt="">
+  <div class="eyebrow">Event Tech · Culture Tech</div>
+  <h1>Seu evento.<br><span>Sua experiência.</span></h1>
+  <p>Planejamento, gestão, convidados e experiências numa só plataforma.</p>
+</div>
+<div class="badge"><span class="dot"></span>Lançamento 2027 · banco de espera aberto</div>
+<div class="url">dyonoficial.com.br</div>
+</body></html>
