@@ -22,6 +22,11 @@
   --white:#FFFFFF;
   --ink-soft:#615B70;
   --ink-faint:#928CA1;
+  /* Variante do --ink-faint para texto pequeno sobre fundo CLARO.
+     #928CA1 sobre --lavender-50 da 2.99:1 e reprova no WCAG AA (minimo 4.5:1).
+     Esta da 5.17:1. O --ink-faint original segue em uso no rodape escuro,
+     onde ja passa com 5.99:1 — por isso a variante em vez de trocar o token. */
+  --ink-faint-on-light:#6B6480;
   --line:#E7E2F1;
   --line-light:rgba(255,255,255,0.12);
   --line-light-strong:rgba(255,255,255,0.22);
@@ -447,7 +452,7 @@ img,svg{display:block; max-width:100%;}
 }
 .app-linha b{font-size:10.5px; font-weight:500; color:#3d3650; flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
 .app-linha em{font-style:normal; font-size:8.5px; color:#866e23; background:#FBF3DA; padding:3px 7px; border-radius:20px; flex:none;}
-.plataforma figcaption{font-size:12.5px; color:var(--ink-faint); text-align:center;}
+.plataforma figcaption{font-size:12.5px; color:var(--ink-faint-on-light); text-align:center;}
 
 /* --- experiência do convidado --- */
 .guest-showcase{display:grid; grid-template-columns:.85fr 1fr; gap:64px; align-items:center; margin-top:60px;}
@@ -479,7 +484,7 @@ img,svg{display:block; max-width:100%;}
 }
 .mock-ring::before{content:""; position:absolute; inset:7px; border-radius:50%; background:var(--lavender-50);}
 .mock-ring span{position:relative;}
-.mock-caption{font-size:10px; color:var(--ink-faint); font-weight:600; letter-spacing:.02em;}
+.mock-caption{font-size:10px; color:var(--ink-faint-on-light); font-weight:600; letter-spacing:.02em;}
 .mock-grid{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:6px; margin-top:20px; width:100%;}
 .mock-grid div{
   background:#fff; border:1px solid var(--line); border-radius:var(--radius-sm); aspect-ratio:1;
