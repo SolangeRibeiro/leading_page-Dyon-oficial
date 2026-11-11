@@ -23,10 +23,14 @@
   --ink-soft:#615B70;
   --ink-faint:#928CA1;
   /* Variante do --ink-faint para texto pequeno sobre fundo CLARO.
-     #928CA1 sobre --lavender-50 da 2.99:1 e reprova no WCAG AA (minimo 4.5:1).
-     Esta da 5.17:1. O --ink-faint original segue em uso no rodape escuro,
-     onde ja passa com 5.99:1 — por isso a variante em vez de trocar o token. */
-  --ink-faint-on-light:#6B6480;
+     O --ink-faint original (#928CA1) segue em uso no rodape escuro, onde ja
+     passa com 5.99:1 — por isso a variante em vez de trocar o token.
+
+     O valor foi medido no pixel renderizado, nao deduzido do CSS: a legenda
+     da plataforma cai sobre a sombra do mockup, que escurece o fundo de
+     --lavender-50 (#F7F5FC) para cerca de #D6D2DF. Contra esse fundo real,
+     esta cor da 4.95:1; contra o lavanda liso, 6.80:1. */
+  --ink-faint-on-light:#595367;
   --line:#E7E2F1;
   --line-light:rgba(255,255,255,0.12);
   --line-light-strong:rgba(255,255,255,0.22);
@@ -451,7 +455,7 @@ img,svg{display:block; max-width:100%;}
   background:#EDE9FE; color:#5B3CC4; padding:4px 6px; border-radius:5px; flex:none;
 }
 .app-linha b{font-size:10.5px; font-weight:500; color:#3d3650; flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
-.app-linha em{font-style:normal; font-size:8.5px; color:#866e23; background:#FBF3DA; padding:3px 7px; border-radius:20px; flex:none;}
+.app-linha em{font-style:normal; font-size:8.5px; color:#7e671f; background:#FBF3DA; padding:3px 7px; border-radius:20px; flex:none;}
 .plataforma figcaption{font-size:12.5px; color:var(--ink-faint-on-light); text-align:center;}
 
 /* --- experiência do convidado --- */
